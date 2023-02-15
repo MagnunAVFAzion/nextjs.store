@@ -5,6 +5,9 @@
  * */
 const nextConfig = {
   /* config options here */
+  experimental: {
+    runtime: 'experimental-edge',
+  },
   i18n: {
     locales: ['en-US'],
     defaultLocale: 'en-US',
