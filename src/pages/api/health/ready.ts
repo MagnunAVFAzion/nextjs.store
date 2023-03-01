@@ -1,9 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+export const config = {
+  runtime: 'experimental-edge',
+}
 
-/**
- * This is equal to the /api/health/live endpoint for lack of a better
- * implementation differentiating between them.
- */
-export default function handler(_req: NextApiRequest, res: NextApiResponse) {
-  res.status(200).send('OK')
+export default async function handler() {
+  return new Response('OK', { status: 200 })
 }

@@ -1,19 +1,30 @@
 import { isFastStoreError, stringifyCacheControl } from '@faststore/api'
-import type { NextApiHandler, NextApiRequest } from 'next'
 
 import { execute } from '../../server'
 
-const parseRequest = (request: NextApiRequest) => {
+export const config = {
+  runtime: 'experimental-edge',
+}
+
+const getHeadersObj = (headers: any) => {
+  const obj: any = {}
+
+  for (const key of headers.keys()) {
+    obj[key] = headers.get(key)
+  }
+
+  return obj
+}
+
+const parseRequest = async (request: any) => {
+  const { searchParams } = new URL(request.url)
+
   const { operationName, variables, query } =
     request.method === 'POST'
-      ? request.body
+      ? await request.json()
       : {
-          operationName: request.query.operationName,
-          variables: JSON.parse(
-            typeof request.query.variables === 'string'
-              ? request.query.variables
-              : ''
-          ),
+          operationName: searchParams.get('operationName'),
+          variables: JSON.parse(searchParams.get('variables') ?? ''),
           query: undefined,
         }
 
@@ -27,14 +38,12 @@ const parseRequest = (request: NextApiRequest) => {
   }
 }
 
-const handler: NextApiHandler = async (request, response) => {
+export default async function handler(request: any) {
   if (request.method !== 'POST' && request.method !== 'GET') {
-    response.status(405)
-
-    return
+    return new Response('', { status: 405 })
   }
 
-  const { operationName, variables, query } = parseRequest(request)
+  const { operationName, variables, query } = await parseRequest(request)
 
   try {
     const { data, errors, extensions } = await execute(
@@ -43,7 +52,7 @@ const handler: NextApiHandler = async (request, response) => {
         variables,
         query,
       },
-      { headers: request.headers }
+      { headers: getHeadersObj(request.headers) }
     )
 
     const hasErrors = Array.isArray(errors)
@@ -51,7 +60,7 @@ const handler: NextApiHandler = async (request, response) => {
     if (hasErrors) {
       const error = errors.find(isFastStoreError)
 
-      response.status(error?.extensions.status ?? 500)
+      return new Response('', { status: error?.extensions.status ?? 500 })
     }
 
     const cacheControl =
@@ -59,14 +68,15 @@ const handler: NextApiHandler = async (request, response) => {
         ? stringifyCacheControl(extensions.cacheControl)
         : 'no-cache, no-store'
 
-    response.setHeader('cache-control', cacheControl)
-    response.setHeader('content-type', 'application/json')
-    response.send(JSON.stringify({ data, errors }))
+    return new Response(JSON.stringify({ data, errors }), {
+      headers: {
+        'content-type': 'application/json',
+        'cache-control': cacheControl,
+      },
+    })
   } catch (err) {
     console.error(err)
 
-    response.status(500)
+    return new Response('', { status: 500 })
   }
 }
-
-export default handler
