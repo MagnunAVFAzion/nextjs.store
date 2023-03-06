@@ -8,6 +8,8 @@ const nextConfig = {
   experimental: {
     runtime: 'experimental-edge',
   },
+  reactStrictMode: true,
+  swcMinify: true,
   i18n: {
     locales: ['en-US'],
     defaultLocale: 'en-US',
