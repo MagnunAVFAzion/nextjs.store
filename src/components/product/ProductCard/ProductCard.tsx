@@ -16,6 +16,7 @@ import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import styles from 'src/components/product/ProductCard/product-card.module.scss'
+import storeConfig from 'store.config'
 
 type Variant = 'wide' | 'default'
 
@@ -62,6 +63,10 @@ function ProductCard({
   const linkProps = useProductLink({ product, selectedOffer: 0, index })
   const outOfStock = availability !== 'https://schema.org/InStock'
 
+  const handleClick = () => {
+    window.location.href = `${storeConfig.envStoreUrl}/${product.slug}/p`
+  }
+
   return (
     <UIProductCard
       data-fs-product-card
@@ -71,6 +76,8 @@ function ProductCard({
       data-fs-product-card-sku={sku}
       className={styles.fsProductCard}
       {...otherProps}
+      onClick={handleClick}
+      onKeyDown={handleClick}
     >
       <UIProductCardImage data-fs-product-card-image>
         <Image
