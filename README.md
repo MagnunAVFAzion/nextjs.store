@@ -23,6 +23,25 @@ As of Sep, 2022, this starter is still far from covering most basic cases found 
 8. Sitemap
 9. Promotions via utm
 
+## Running on Edge Runtime (Azion)
+
+### Prerequisites
+You need to generate a personal access token (pat) on Github and add it to your npm config.
+This action is needed to get the custom packages.
+
+To generate a new pat go to https://github.com/settings/tokens/new and generate a new token with `read:packages` permission.
+
+Then add the token to `~/.npmrc` file:
+```
+//npm.pkg.github.com/:_authToken=TOKEN_VALUE
+```
+
+### Install and run localhost
+```
+yarn install
+yarn develop
+```
+
 ## 🚀 Quick start
 
 0. **Clone this repo**
