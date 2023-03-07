@@ -9,8 +9,11 @@ export const config = {
 const getHeadersObj = (headers: any) => {
   const obj: any = {}
 
-  for (const key of headers.keys()) {
-    obj[key] = headers.get(key)
+  for (const pair of headers.entries()) {
+    const key = pair[0]
+    const value = pair[1]
+
+    obj[key] = value
   }
 
   return obj
