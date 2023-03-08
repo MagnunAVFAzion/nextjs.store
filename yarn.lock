@@ -1299,10 +1299,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@faststore/api@npm:@MagnunAVFAzion/faststore-api@2.1.1":
-  version "2.1.1"
-  resolved "https://npm.pkg.github.com/download/@MagnunAVFAzion/faststore-api/2.1.1/2ca6d007be3f1ddaa75e151a15bd42746cae408f#2ca6d007be3f1ddaa75e151a15bd42746cae408f"
-  integrity sha512-pULz80951IX8C7K1xoo+cOQ9/Gwzb5rbtoyYfTJvWdRbh2jmH06qwz+/odmGqJeI4PDLhTRg8d1lAVc+a4mTNA==
+"@faststore/api@npm:@MagnunAVFAzion/faststore-api@1.12.35":
+  version "1.12.35"
+  resolved "https://npm.pkg.github.com/download/@MagnunAVFAzion/faststore-api/1.12.35/9f5ad2ea546fd2cb4b99f8f671b8cdfb797f7e46#9f5ad2ea546fd2cb4b99f8f671b8cdfb797f7e46"
+  integrity sha512-i1JqLPdiR/P1C0aHU7RlD3K62K+RC1FKGMF6HOg52x8ZU0MGaCgH12ACS4WW53oiHceR0RkCEybFGlTjaMxGOQ==
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
     "@rollup/plugin-graphql" "^1.0.0"
