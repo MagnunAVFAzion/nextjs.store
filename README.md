@@ -35,6 +35,7 @@ Then add the token to `~/.npmrc` file:
 ```
 //npm.pkg.github.com/:_authToken=TOKEN_VALUE
 ```
+Delete yarn.lock if you still get errors.
 
 ### Install and run localhost
 ```
