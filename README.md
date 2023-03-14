@@ -42,10 +42,8 @@ After install project dependencies and azioncli with success, run:
 azioncli edge_applications init --name MY_APPLICATION_NAME
 azioncli edge_applications publish
 ```
-To delete deployed entities run:
-```
-azioncli edge_applications delete --cascade
-```
+
+The azioncli will provide the url to access the deployed application and some infos after run the publish command.
 
 You will need to activate [Azion Application Acceleration](https://www.azion.com/en/documentation/products/edge-application/application-acceleration/) in created Edge Application if you are using POST routes.
 In this case, after the cli publish, follow these steps:
@@ -53,6 +51,12 @@ In this case, after the cli publish, follow these steps:
 2. On the upper-left corner of the page, select Products menu > Edge Application.
 3. Select the desired Edge Application from the list.
 4. In the Main Settings tab, activate the Application Acceleration module.
+
+## Azion Entities Delete
+To delete deployed entities run:
+```
+azioncli edge_applications delete --cascade
+```
 
 # Original Notes
 ## ⚠️ Before you start
