@@ -39,7 +39,6 @@ module.exports = {
   checkoutUrl: 'https://secure.vtexfaststore.com/checkout',
   loginUrl: 'https://secure.vtexfaststore.com/api/io/login',
   accountUrl: 'https://secure.vtexfaststore.com/api/io/account',
-  envStoreUrl: 'http://localhost:3000',
 
   // Lighthouse CI
   lighthouse: {
