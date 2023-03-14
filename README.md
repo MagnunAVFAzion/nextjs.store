@@ -9,6 +9,52 @@
 
 Kickoff your store with this boilerplate. This starter ships with the main FastStore configuration files you might need to get up and running blazing fast with the blazing-fast store for React.
 
+# Running on Azion Edge Runtime
+## Prerequisites
+### Github Pat
+You need to generate a personal access token (pat) on Github and add it to your npm config.
+This action is needed to get the custom packages.
+
+To generate a new pat go to https://github.com/settings/tokens/new and generate a new token with `read:packages` permission.
+
+Then add the token to `~/.npmrc` file:
+```
+//npm.pkg.github.com/:_authToken=TOKEN_VALUE
+```
+Delete yarn.lock if you still get errors.
+
+### Azion Cli
+To build and publish the application on azion environment you need to install azioncli version 0.52.0.
+
+After install azioncli don't forget to configure your token.
+
+For instructions access [azioncli First steps page](https://www.azion.com/en/documentation/products/cli/first-steps/)
+
+## Install and run localhost
+```
+yarn install
+yarn develop
+```
+
+## Azion Deploy
+After install project dependencies and azioncli with success, run:
+```
+azioncli edge_applications init --name MY_APPLICATION_NAME
+azioncli edge_applications publish
+```
+To delete deployed entities run:
+```
+azioncli edge_applications delete --cascade
+```
+
+You will need to activate [Azion Application Acceleration](https://www.azion.com/en/documentation/products/edge-application/application-acceleration/) in created Edge Application if you are using POST routes.
+In this case, after the cli publish, follow these steps:
+1. Access Real-Time Manager.
+2. On the upper-left corner of the page, select Products menu > Edge Application.
+3. Select the desired Edge Application from the list.
+4. In the Main Settings tab, activate the Application Acceleration module.
+
+# Original Notes
 ## ⚠️ Before you start
 
 As of Sep, 2022, this starter is still far from covering most basic cases found on VTEX. To summarize what we still do not support that is considered basic on the VTEX commerce platform, we prepared the list below. If the feature you want is listed, you can either wait for us to add support to the feature, or fork the repo and implement on your own. Note that, by forking the repo, you will miss new features and improvements we do in this repo and you will need a developer to backport the feature to your store. Finally, this list is a work in progress, so some features may be missing from both base.store starter and this list.
@@ -22,26 +68,6 @@ As of Sep, 2022, this starter is still far from covering most basic cases found 
 7. Shipping simulation
 8. Sitemap
 9. Promotions via utm
-
-## Running on Edge Runtime (Azion)
-
-### Prerequisites
-You need to generate a personal access token (pat) on Github and add it to your npm config.
-This action is needed to get the custom packages.
-
-To generate a new pat go to https://github.com/settings/tokens/new and generate a new token with `read:packages` permission.
-
-Then add the token to `~/.npmrc` file:
-```
-//npm.pkg.github.com/:_authToken=TOKEN_VALUE
-```
-Delete yarn.lock if you still get errors.
-
-### Install and run localhost
-```
-yarn install
-yarn develop
-```
 
 ## 🚀 Quick start
 
