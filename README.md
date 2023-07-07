@@ -4,7 +4,7 @@
   </a>
 </p>
 <h1 align="center">
-  A starter powered by FastStore and NextJS
+  A starter powered by FastStore and NextJS. 
 </h1>
 
 Kickoff your store with this boilerplate. This starter ships with the main FastStore configuration files you might need to get up and running blazing fast with the blazing-fast store for React.
@@ -116,7 +116,7 @@ A quick look at the top-level files and directories you'll see in a NextJS proje
 
 5.  **`.eslintrc.js`**: This is a configuration file for [ESLint](https://eslint.org/). ESlint is a tool to find and fix problems in your JavaScript code.
 
-6.  **`LICENSE`**: NextJS is licensed under the MIT license.
+6.  **`LICENSE`**: NextJS is licensed under the MIT license
 
 7.  **`yarn.lock`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
 
@@ -134,7 +134,7 @@ A quick look at the top-level files and directories you'll see in a NextJS proje
 
 14. **`babel.config.js`**: [Babel configurations](https://babeljs.io/docs/en/configuration#babelrcjson) for you app. This is where you can change the targeted browsers.
 
-15. **`cypress`**: End to End(e2e) tests using Cypress. Most of the scenarios are covered here. Add your custom flows to avoid regressions
+15. **`cypress`**: End to End(e2e) tests using Cypress. Most of the scenarios are covered here. Add your custom flows to avoid regressions.
 
 16. **`cypress.json`**: [Cypress configuration file](https://docs.cypress.io/guides/references/configuration)
 
